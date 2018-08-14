@@ -1,0 +1,52 @@
+{extend name="public:base" /}
+{block name="title"}积分调整{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('points/index')}">积分管理</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 积分调整 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+    <div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">会员名称:</td>
+                <td>
+                    <select name="pl_member_id">
+                        <option value="0"></option>
+                        {volist name="member" id="vo"}
+                        <option value="{$vo.member_id}">{$vo.member_name}</option>
+                        {/volist}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">增减类型:</td>
+                <td>
+                    <input type="radio" name="pl_check_type" value="0"  checked="true"/>增加
+                    <input type="radio" name="pl_check_type" value="1"  />减少
+                </td>
+            </tr>
+            <tr>
+                <td class="label">积分值:</td>
+                <td>
+                     <input type='text' name='pl_check_points' maxlength="10" size="10" value='' />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">描述:</td>
+                <td>
+                    <textarea name="pl_points_comments"></textarea>
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}

@@ -1,0 +1,35 @@
+{extend name="public:base" /}
+{block name="title"}编辑审核状态{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('goods/check')}">审核商品</a></span>
+    <span class="action-span1"><a href="#">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 编辑审核状态 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">商品名称:</td>
+                <td>
+                    <input type='text' name='goods_name' maxlength="20" value='{$info.goods_name}' size='27' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">审核状态:</td>
+                <td>
+                    <input type="radio" name="is_check" value="1" {eq name="info.is_check" value="1" }checked="checked"{/eq} /> 审核通过
+                    <input type="radio" name="is_check" value="2" {eq name="info.is_check" value="2" }checked="checked"{/eq}/> 审核未通过
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}

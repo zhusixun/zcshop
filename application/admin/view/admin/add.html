@@ -1,0 +1,52 @@
+{extend name="public:base" /}
+{block name="title"}添加管理员{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('admin/index')}">管理员设置</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 添加管理员 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">登录名:</td>
+                <td>
+                    <input type='text' name='admin_name' maxlength="20" value='' size='27' />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">密码:</td>
+                <td>
+					<input type="password" name="admin_password">
+                </td>
+            </tr>
+            <tr>
+            	<td class="label">确认密码:</td>
+            	<td>
+                    <input type="password" name="admin_again_password">
+                </td>
+            </tr>
+            <tr>
+            	<td class="label">权限组</td>
+            	<td>
+            		<select name="gid">
+            			<option value="">请选择权限组</option>
+                        {volist name="gname" id="vo"}
+                        <option value="{$vo.gid}">{$vo.gname}</option>}
+                        {/volist}
+            		</select>
+            		<font color="gray"><a href="#">请选择一个权限组，如果还未设置，请马上设置</a></font>
+            	</td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}

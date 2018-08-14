@@ -1,0 +1,32 @@
+{extend name="public:base" /}
+{block name="title"}积分管理{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('points/check')}">积分调整</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 积分管理 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1">
+            <tr>
+                <th>会员名称</th>
+                <th>管理员名称</th>
+      			<th>积分值</th>
+                <th>添加时间</th>
+                <th>操作描述</th>
+            </tr>
+			{volist name="info" id="vo"}
+            <tr>
+                <td align="center">{$vo.pl_member_name}</td>
+                <td align="center">{$vo.pl_admin_name}</td>
+                <td align="center">{$vo.pl_check_points}</td>
+                <td align="center">{$vo.pl_addtime|date='Y-m-d H:i:s',###}</td>
+                <td align="center">{$vo.pl_points_comments}</td>
+            </tr>
+			{/volist}
+        </table>
+    </div>
+{/block}

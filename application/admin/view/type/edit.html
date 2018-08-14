@@ -1,0 +1,61 @@
+{extend name="public:base" /}
+{block name="title"}增加类别{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('type/index')}">商品类型</a></span>
+    <span class="action-span1"><a href="#">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 修改类型 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">类型名称:</td>
+                <td>
+                    <input type='text' name='type_name' maxlength="20" value='{$type.type_name}' size='27' />&nbsp;&nbsp;<a href="{:url('attribute/attr')}"><font color="gray">请选择相关属性,如有不合适的属性,请自行添加</font></a>
+                </td>
+            </tr>
+            {volist name="info" id="v"}
+            <tr>
+            	<td class="label"><a onclick="attr_clone(this)">[+]</a>选择属性:</td>
+            	<td>
+            		<select name="attr_name[]">
+                        <option value="">请选择属性</option>
+                        {volist name="attr" id="vo"}
+                        <option value="{$vo.attr_id}">{$vo.attr_name}</option>}
+                        option
+                        {/volist}
+                    </select>
+            	</td>
+            </tr>
+            {/volist}
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript">
+    function attr_clone(obj){
+        //alert(1);
+        var Tr = $(obj).parent().parent();
+        //console.log(Tr);
+        if($(obj).html()=='[+]'){
+
+            var newTr = Tr.clone();
+            //console.log(newTr)
+            newTr.find('a').html('[-]');
+            Tr.after(newTr);
+        }else{
+            // 删除
+            Tr.remove();
+        }
+    }
+</script>
+{/block}

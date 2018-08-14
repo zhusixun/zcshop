@@ -1,0 +1,31 @@
+{extend name="public:base" /}
+{block name="title"}权限组列表{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('gadmin/add')}">添加权限组</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 权限组设置 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<form method="post" action="" name="listForm">
+    <div class="list-div" id="listDiv">
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tr>
+            	<th>类型名称</th>
+                <th>操作</th>
+            </tr>   
+            {volist name="info" id="info"}    
+            <tr align="center" class="0">
+            	<td align="left">{$info.gname}</td>
+                <td width="30%" align="center">
+                <a href="{:url('edit','id='.$info['gid'])}">编辑</a> |
+                <a href="{:url('del','id='.$info['gid'])}" title="移除" onclick="">移除</a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</form>
+{/block}

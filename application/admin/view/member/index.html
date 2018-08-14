@@ -1,0 +1,42 @@
+{extend name="public:base" /}
+{block name="title"}会员管理{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('member/add')}">添加会员</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 会员管理 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1">
+            <tr>
+                <th>会员名称</th>
+                <th>真实姓名</th>
+                <th>登录次数</th>
+                <th>最后登陆</th>
+                <th>积分</th>
+      			<th>经验值</th>
+      			<th>级别</th>
+      			<th>是否登录</th>
+                <th>操作</th>
+            </tr>
+			{volist name="info" id="vo"}
+            <tr>
+                <td align="center"><img src="/{$vo.member_avatar}">{$vo.member_name}</td>
+                <td align="center">{$vo.member_truename}(真实姓名)<br/>{$vo.member_addtime|date='Y-m-d H:i:s',###}</td>
+                <td align="center">{$vo.member_login_num}</td>
+                <td align="center">{$vo.member_old_login_time}</td>
+                <td align="center">{$vo.member_points}</td>
+                <td align="center">{$vo.member_exppoints}</td>
+                <td align="center">v1</td>
+                <td align="center"><img src="__ADMIN__/Images/{eq name="$vo.member_state" value="0"}yes{else /}no{/eq}.gif "/></td>
+                <td align="center">
+                <a href="{:url('edit','id='.$vo['member_id'])}" title="编辑"><img src="__ADMIN__/Images/icon_edit.gif" width="16" height="16" border="0" /></a>
+                <a href="{:url('del','id='.$vo['member_id'])}" title="删除"><img src="__ADMIN__/Images/icon_trash.gif" width="16" height="16" border="0" /></a></td>
+            </tr>
+			{/volist}
+        </table>
+    </div>
+{/block}

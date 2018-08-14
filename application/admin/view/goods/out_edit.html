@@ -1,0 +1,35 @@
+{extend name="public:base" /}
+{block name="title"}编辑下架状态{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('goods/out')}">下架商品</a></span>
+    <span class="action-span1"><a href="#">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 编辑下架状态 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">商品名称:</td>
+                <td>
+                    <input type='text' name='goods_name' maxlength="20" value='{$info.goods_name}' size='27' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">是否下架:</td>
+                <td>
+                    <input type="radio" name="is_out" value="0" {eq name="info.is_out" value="0" }checked="checked"{/eq} /> 是
+                    <input type="radio" name="is_out" value="1" {eq name="info.is_out" value="1" }checked="checked"{/eq}/> 否
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}

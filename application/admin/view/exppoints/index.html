@@ -1,0 +1,32 @@
+{extend name="public:base" /}
+{block name="title"}经验值管理{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('exppoints/rule')}">规则明细</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 经验值管理 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1">
+            <tr>
+                <th>会员名称</th>
+      			<th>经验值</th>
+                <th>添加时间</th>
+      			<th>操作阶段</th>
+      			<th>操作描述</th>
+            </tr>
+			{volist name="info" id="vo"}
+            <tr>
+                <td align="center">{$vo.explog_member_name}</td>
+                <td align="center">{$vo.add_exppoints}</td>
+                <td align="center">{$vo.explog_addtime|date='Y-m-d H:i:s',###}</td>
+                <td align="center">{$vo.explog_stage}</td>
+                <td align="center">{$vo.explog_desc}</td>
+            </tr>
+			{/volist}
+        </table>
+    </div>
+{/block}

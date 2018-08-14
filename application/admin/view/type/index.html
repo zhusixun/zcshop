@@ -1,0 +1,33 @@
+{extend name="public:base" /}
+{block name="title"}商品类型{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('type/add')}">添加类型</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 商品类型 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<form method="post" action="" name="listForm">
+    <div class="list-div" id="listDiv">
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tr>
+            	<th>编号</th>
+            	<th>类型名称</th>
+                <th>操作</th>
+            </tr>   
+            {volist name="info" id="info"}    
+            <tr align="center" class="0">
+            	<td align="center">{$info.type_id}</td>
+            	<td align="center">{$info.type_name}</td>
+                <td width="30%" align="center">
+                <a href="{:url('edit','id='.$info['type_id'])}">编辑</a> |
+                <a href="{:url('del','id='.$info['type_id'])}" title="移除" onclick="">移除</a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</form>
+{/block}

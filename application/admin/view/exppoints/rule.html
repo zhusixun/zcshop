@@ -1,0 +1,52 @@
+{extend name="public:base" /}
+{block name="title"}规则明细{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('exppoints/index')}">经验值管理</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 规则明细 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">操作</td>
+                <td><b>经验值</b></td>
+            </tr>
+            <tr>
+                <td class="label">会员每天第一次登录:</td>
+                <td>
+                    <input type='text' name="login" maxlength="10" size="10" value='{if condition="$info[0]['explog_stage'] eq 'login'"}{$info[0]['add_exppoints']}{/if}'/>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">订单商品评论:</td>
+                <td>
+                    <input type='text' name='comments' maxlength="10" size="10" value='{if condition="$info[1]['explog_stage'] eq 'comments'"}{$info[1]['add_exppoints']}{/if}' />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">消费额与赠送经验值比例:</td>
+                <td>
+                    <input type='text' name='order_rate' maxlength="10" size="10" value='{if condition="$info[2]['explog_stage'] eq 'order_rate'"}{$info[2]['add_exppoints']}{/if}' />
+                    <span>该值为大于0的数， 例:设置为10，表明消费10单位货币赠送1经验值</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">每订单最多赠送经验值:</td>
+                <td>
+                    <input type='text' name='order_max' maxlength="10" size="10" value='{if condition="$info[3]['explog_stage'] eq 'order_max'"}{$info[3]['add_exppoints']}{/if}' />
+                    <span>该值为大于等于0的数，填写为0表明不限制最多经验值，例:设置为100，表明每订单赠送经验值最多为100经验值</span>
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}

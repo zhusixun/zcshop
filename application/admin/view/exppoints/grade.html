@@ -1,0 +1,92 @@
+{extend name="public:base" /}
+{block name="title"}会员等级{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('exppoints/index')}">会员管理</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 会员等级 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">级别</td>
+                <td><b>经验值</b></td>
+            </tr>
+            <tr>
+                <td class="label">V0:</td>
+                <td>
+                    <input type='text' name="V0" maxlength="10" size="10" value='{if condition="$info[0]['grade_name'] eq 'V0'"}{$info[0]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V1:</td>
+                <td>
+                    <input type='text' name="V1" maxlength="10" size="10" value='{if condition="$info[1]['grade_name'] eq 'V1'"}{$info[1]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V2:</td>
+                <td>
+                    <input type='text' name="V2" maxlength="10" size="10" value='{if condition="$info[2]['grade_name'] eq 'V2'"}{$info[2]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V3:</td>
+                <td>
+                    <input type='text' name="V3" maxlength="10" size="10" value='{if condition="$info[3]['grade_name'] eq 'V3'"}{$info[3]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V4:</td>
+                <td>
+                    <input type='text' name="V4" maxlength="10" size="10" value='{if condition="$info[4]['grade_name'] eq 'V4'"}{$info[4]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V5:</td>
+                <td>
+                    <input type='text' name="V5" maxlength="10" size="10" value='{if condition="$info[5]['grade_name'] eq 'V5'"}{$info[5]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V6:</td>
+                <td>
+                    <input type='text' name="V6" maxlength="10" size="10" value='{if condition="$info[6]['grade_name'] eq 'V6'"}{$info[6]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V7:</td>
+                <td>
+                    <input type='text' name="V7" maxlength="10" size="10" value='{if condition="$info[7]['grade_name'] eq 'V7'"}{$info[7]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V8:</td>
+                <td>
+                    <input type='text' name="V8" maxlength="10" size="10" value='{if condition="$info[8]['grade_name'] eq 'V8'"}{$info[8]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V9:</td>
+                <td>
+                    <input type='text' name="V9" maxlength="10" size="10" value='{if condition="$info[9]['grade_name'] eq 'V9'"}{$info[9]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+             <tr>
+                <td class="label">V10:</td>
+                <td>
+                    <input type='text' name="V10" maxlength="10" size="10" value='{if condition="$info[10]['grade_name'] eq 'V10'"}{$info[10]['grade_points']}{/if}'/>
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}

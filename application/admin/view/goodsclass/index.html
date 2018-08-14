@@ -1,0 +1,35 @@
+{extend name="public:base" /}
+{block name="title"}商品分类列表{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('goodsclass/add')}">添加分类</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 商品分类 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<form method="post" action="" name="listForm">
+    <div class="list-div" id="listDiv">
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tr>
+                <th>分类名称</th>
+                <th>是否显示</th>
+                <th>操作</th>
+            </tr>       
+            {volist name="tree" id="vo"}
+            <tr align="center" class="0">
+                <td align="left" class="first-cell" >
+                   {$vo.lev|str_repeat='&nbsp;&nbsp;',###}{$vo.gc_name}
+                </td>  
+                <td align="center"><img src="__ADMIN__/Images/{eq name="vo.gc_show" value="0"}yes{else /}no{/eq}.gif "/></td>
+                <td width="30%" align="center">
+                <a href="{:url('edit','id='.$vo['gc_id'])}">编辑</a> |
+                <a href="{:url('del','id='.$vo['gc_id'])}" title="移除" onclick="">移除</a>
+                </td>
+            </tr>
+            {/volist} 
+        </table>
+    </div>
+</form>
+{/block}

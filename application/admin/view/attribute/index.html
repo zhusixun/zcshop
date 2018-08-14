@@ -1,0 +1,39 @@
+{extend name="public:base" /}
+{block name="title"}商品属性{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('attribute/add')}">添加属性</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 商品属性 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<form method="post" action="" name="listForm">
+    <div class="list-div" id="listDiv">
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tr>
+            	<th>编号</th>
+                <th>属性名称</th>
+                <th>属性类别</th>
+                <th>属性值</th>
+                <th>操作</th>
+            </tr>   
+            {volist name="info" id="info"}    
+            <tr align="center" class="0">
+            	<td align="center">{$info.attr_id}</td>
+            	<td align="center">{$info.attr_name}</td>
+               	<td align="center">
+               		{if condition="$info.attr_type eq 0"}单选属性{else /}唯一属性{/if}
+               	</td>
+               	<td align="center">{$info.attr_values}</td>
+                <td width="30%" align="center">
+                <a href="{:url('edit','id='.$info['attr_id'])}">编辑</a> |
+                <a href="{:url('del','id='.$info['attr_id'])}" title="移除" onclick="">移除</a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</form>
+{/block}

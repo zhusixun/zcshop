@@ -1,0 +1,38 @@
+{extend name="public:base"}
+{block name="title"}相册管理{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('image/add')}">添加相册</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 相册管理 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<form method="post" action="" name="listForm">
+    <div class="list-div" id="listDiv">
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tr>
+            	<th>封面</th>
+            	<th>相册名称</th>
+            	<th>商品名称</th>
+            	<th>图片数</th>
+                <th>操作</th>
+            </tr>   
+            {volist name="info" id="vo"}    
+            <tr align="center" class="0">
+            	 <td align="center"><img src="/{$vo.img_logo}" height="50" width="50"></td>
+            	<td align="center">{$vo.img_name}</td>
+				<td align="center">{$vo.goods_name}</td>
+				<td align="center">{$vo.img_number}</td>
+                <td width="30%" align="center">
+                <a href="{:url('see','id='.$vo['img_id'])}">图片</a> |
+                <a href="{:url('edit','id='.$vo['img_id'])}">编辑</a> |
+                <a href="{:url('del','id='.$vo['img_id'])}">移除</a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</form>
+{/block}

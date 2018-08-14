@@ -1,0 +1,12 @@
+<table width="90%"  align="center">
+{volist name="info" id="vo"}
+    <tr>
+        <td class="label">{$vo.attr_name}：</td>
+        <td align="left">
+            {volist name="vo.attr_values" id="v"}
+            <label>{$v}</label><input type="{eq name="vo.attr_type" value="0"}checkbox{else /}radio{/eq}" name="attr_values[{$vo.attr_id}][]" value="{$v}">
+            {/volist}
+        </td>
+    </tr>
+{/volist}
+</table>

@@ -1,0 +1,106 @@
+{extend name="public:base" /}
+{block name="title"}品牌列表{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('brand/add')}">添加品牌</a></span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 商品品牌 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<style>
+  .ab li{
+    float: left;
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 10px;
+    height: 25px;
+    font-size: 15px;
+  }  
+  .ab li a{
+
+  }
+</style>
+<div class="ab">
+    <ul>
+        <li><a href="{:url('brand/index','id=0')}">ALL</a></li>
+        <li><a href="{:url('brand/index','id=65')}">A</a></li>
+        <li><a href="{:url('brand/index','id=66')}">B</a></li>
+        <li><a href="{:url('brand/index','id=67')}">C</a></li>
+        <li><a href="{:url('brand/index','id=68')}">D</a></li>
+        <li><a href="{:url('brand/index','id=69')}">E</a></li>
+        <li><a href="{:url('brand/index','id=70')}">F</a></li>
+        <li><a href="{:url('brand/index','id=71')}">G</a></li>
+        <li><a href="{:url('brand/index','id=72')}">H</a></li>
+        <li><a href="{:url('brand/index','id=73')}">I</a></li>
+        <li><a href="{:url('brand/index','id=74')}">J</a></li>
+        <li><a href="{:url('brand/index','id=75')}">K</a></li>
+        <li><a href="{:url('brand/index','id=76')}">L</a></li>
+        <li><a href="{:url('brand/index','id=77')}">M</a></li>
+        <li><a href="{:url('brand/index','id=78')}">N</a></li>
+        <li><a href="{:url('brand/index','id=79')}">O</a></li>
+        <li><a href="{:url('brand/index','id=80')}">P</a></li>
+        <li><a href="{:url('brand/index','id=81')}">Q</a></li>
+        <li><a href="{:url('brand/index','id=82')}">R</a></li>
+        <li><a href="{:url('brand/index','id=83')}">S</a></li>
+        <li><a href="{:url('brand/index','id=84')}">T</a></li>
+        <li><a href="{:url('brand/index','id=85')}">U</a></li>
+        <li><a href="{:url('brand/index','id=86')}">V</a></li>
+        <li><a href="{:url('brand/index','id=87')}">W</a></li>
+        <li><a href="{:url('brand/index','id=88')}">X</a></li>
+        <li><a href="{:url('brand/index','id=89')}">Y</a></li>
+        <li><a href="{:url('brand/index','id=90')}">Z</a></li>
+    </ul>
+</div>
+<form method="post" action="" name="listForm">
+    <div class="list-div" id="listDiv">
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tr>
+            	<th>品牌名称</th>
+                <th>所属分类</th>
+                <th>品牌Logo</th>
+                <th>是否推荐</th>
+                <th>排序</th>
+                <th>审核状态</th>
+                <th>操作</th>
+            </tr>   
+            {volist name="info" id="vo"}    
+            <tr align="center" class="0">
+            	<td align="center">{$vo.brand_name}</td>
+            	<td align="center">{$vo.gc_name}</td>
+                <td align="center">
+                    {if condition="$vo['brand_logo'] neq ''"}
+                    <img src="/{$vo.brand_logo}" height="50" width="50">
+                    {else /}
+                    暂无图片
+                    {/if}
+                </td>
+                <td align="center"><img src="__ADMIN__/Images/{eq name="$vo.brand_recommend" value="0"}yes{else /}no{/eq}.gif "/></td>
+                <td align="center">{$vo.brand_sort}</td>
+                <td align="center">
+                    {if condition="$vo.brand_apply eq 0"}<font color="red">审核中</font>{/if}
+                    {if condition="$vo.brand_apply eq 1"}<font color="red">审核成功</font>{/if}
+                    {if condition="$vo.brand_apply eq 2"}<font color="red">审核未通过</font>{/if}
+                </td>
+                <td width="30%" align="center">
+                <a href="{:url('edit','id='.$vo['brand_id'])}">编辑</a> |
+                <a href="{:url('del','id='.$vo['brand_id'])}" title="移除" onclick="">移除</a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+         <style type="text/css">
+            .pagination li{ float: left; margin: 0 10px; list-style: none}
+        </style>
+        <table id="page-table" cellspacing="0">
+            <tr>
+                <td width="80%">&nbsp;</td>
+                <td align="center" nowrap="true">
+                    {$info->render()}
+                </td>
+            </tr>
+    </table>
+    </div>
+</form>
+{/block}

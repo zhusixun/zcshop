@@ -1,0 +1,72 @@
+{extend name="public:base" /}
+{block name="title"}修改商品信息{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('brand/index')}">商品品牌</a></span>
+    <span class="action-span1"><a href="#">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 修改品牌 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">品牌名称:</td>
+                <td>
+                    <input type='text' name='brand_name' maxlength="20" value='{$info.brand_name}' size='27' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">品牌首字母:</td>
+                <td>
+                    <input type='text' name='brand_initial' maxlength="1" value='{$info.brand_initial}' size='27' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">所属分类:</td>
+                <td>
+                    <select name="gc_id">
+                        <option value="0">请选择...</option>
+                        {volist name="tree" id="vo"}
+                        <option value="{$vo.gc_id}" {eq name="info.gc_id" value="$vo.gc_id" }selected="selected"{/eq}>{$vo.lev|str_repeat='&nbsp;&nbsp;',###}{$vo.gc_name}</option>
+                        {/volist}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">排序:</td>
+                <td>
+                    <input type='text' name='brand_sort' maxlength="1" value='{$info.brand_sort}' size='15' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+            	<td class="label">上传Logo</td>
+            	<td>
+            		<input type="file" name="brand_logo" size="35" />
+            	</td>
+            </tr>
+            <tr>
+                <td class="label">是否推荐:</td>
+                <td>
+                    <input type="radio" name="brand_recommend" value="0" {eq name="info.brand_recommend" value="0" }checked="checked"{/eq} /> 是
+                    <input type="radio" name="brand_recommend" value="1" {eq name="info.brand_recommend" value="1" }checked="checked"{/eq}/> 否
+                </td>
+            </tr>
+            <tr>
+                <td class="label">审核状态:</td>
+                <td>
+                    <input type="radio" name="brand_apply" value="0" {eq name="info.brand_apply" value="0" }checked="checked"{/eq} />审核中
+                    <input type="radio" name="brand_apply" value="1" {eq name="info.brand_apply" value="1" }checked="checked"{/eq} />审核通过
+                    <input type="radio" name="brand_apply" value="2" {eq name="info.brand_apply" value="2" }checked="checked"{/eq} />审核未通过
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}

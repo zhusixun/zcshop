@@ -1,0 +1,63 @@
+{extend name="public:base" /}
+{block name="title"}商品品牌{/block}
+{block name="header"}
+<h1>
+    <span class="action-span"><a href="{:url('brand/index')}">商品品牌</a></span>
+    <span class="action-span1"><a href="#">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 添加品牌 </span>
+    <div style="clear:both"></div>
+</h1>
+{/block}
+{block name="body"}
+<div class="main-div">
+    <form action="" method="post" name="theForm" enctype="multipart/form-data">
+        <table width="100%" id="general-table">
+            <tr>
+                <td class="label">品牌名称:</td>
+                <td>
+                    <input type='text' name='brand_name' maxlength="20" value='' size='27' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">品牌首字母:</td>
+                <td>
+                    <input type='text' name='brand_initial' maxlength="1" value='' size='27' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">所属分类:</td>
+                <td>
+                    <select name="gc_id">
+                        {volist name="tree" id="vo"}
+                        <option value="{$vo.gc_id}">{$vo.lev|str_repeat='&nbsp;&nbsp;',###}{$vo.gc_name}</option>
+                        {/volist}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">排序:</td>
+                <td>
+                    <input type='text' name='brand_sort' maxlength="10" value='' size='15' /> <font color="red">*</font>
+                </td>
+            </tr>
+            <tr>
+            	<td class="label">上传Logo</td>
+            	<td>
+            		<input type="file" name="brand_logo" size="35" />
+            	</td>
+            </tr>
+            <tr>
+                <td class="label">是否推荐:</td>
+                <td>
+                    <input type="radio" name="brand_recommend" value="0"  checked="true"/> 是 
+                    <input type="radio" name="brand_recommend" value="1"  /> 否
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="submit" value=" 确定 " />
+            <input type="reset" value=" 重置 " />
+        </div>
+    </form>
+</div>
+{/block}
